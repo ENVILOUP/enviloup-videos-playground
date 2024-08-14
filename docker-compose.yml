@@ -1,0 +1,43 @@
+services:
+  api:
+    image: enviloup/api
+    networks:
+      - enviloup
+
+  users:
+    image: enviloup/users
+    networks:
+      - enviloup
+
+  comments:
+    image: enviloup/comments/comments
+    networks:
+      - enviloup
+
+  notifications:
+    image: enviloup/notifications
+    networks:
+      - enviloup
+
+  processing:
+    image: enviloup/processing
+    networks:
+      - enviloup
+
+  recommendations:
+    image: enviloup/recommendations
+    networks:
+      - enviloup
+
+  search:
+    image: enviloup/search
+    networks:
+      - enviloup
+
+  uploading:
+    image: enviloup/uploading
+    networks:
+      - enviloup
+
+networks:
+  enviloup:

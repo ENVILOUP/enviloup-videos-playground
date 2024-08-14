@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+
+  users:
+    build:
+      context: .
+      dockerfile: users/Dockerfile
+
+  comments:
+    build:
+      context: .
+      dockerfile: comments/Dockerfile
+
+  notifications:
+    build:
+      context: .
+      dockerfile: notifications/Dockerfile
+
+  processing:
+    build:
+      context: .
+      dockerfile: processing/Dockerfile
+
+  recommendations:
+    build:
+      context: .
+      dockerfile: recommendations/Dockerfile
+
+  search:
+    build:
+      context: .
+      dockerfile: search/Dockerfile
+
+  uploading:
+    build:
+      context: .
+      dockerfile: uploading/Dockerfile
