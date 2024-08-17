@@ -3,38 +3,54 @@ services:
     build:
       context: .
       dockerfile: api/Dockerfile
+    volumes:
+      - ./api:/app/api
 
   users:
     build:
       context: .
       dockerfile: users/Dockerfile
+    volumes:
+      - ./users:/app/users
 
   comments:
     build:
       context: .
       dockerfile: comments/Dockerfile
+    volumes:
+      - ./comments:/app/comments
 
   notifications:
     build:
       context: .
       dockerfile: notifications/Dockerfile
+    volumes:
+      - ./notifications:/app/notifications
 
   processing:
     build:
       context: .
       dockerfile: processing/Dockerfile
+    volumes:
+      - ./processing:/app/processing
 
   recommendations:
     build:
       context: .
       dockerfile: recommendations/Dockerfile
+    volumes:
+      - ./recommendations:/app/recommendations
 
   search:
     build:
       context: .
       dockerfile: search/Dockerfile
+    volumes:
+      - ./search:/app/search
 
   uploading:
     build:
       context: .
       dockerfile: uploading/Dockerfile
+    volumes:
+      - ./uploading:/app/uploading

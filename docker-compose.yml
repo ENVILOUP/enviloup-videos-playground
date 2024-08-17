@@ -6,7 +6,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./frontend:/var/www/html
     networks:
       - enviloup
 
@@ -14,41 +15,57 @@ services:
     image: enviloup/api
     networks:
       - enviloup
+    expose:
+      - 8000
 
   users:
     image: enviloup/users
     networks:
       - enviloup
+    expose:
+      - 8000
 
   comments:
     image: enviloup/comments
     networks:
       - enviloup
+    expose:
+      - 8000
 
   notifications:
     image: enviloup/notifications
     networks:
       - enviloup
+    expose:
+      - 8000
 
   processing:
     image: enviloup/processing
     networks:
       - enviloup
+    expose:
+      - 8000
 
   recommendations:
     image: enviloup/recommendations
     networks:
       - enviloup
+    expose:
+      - 8000
 
   search:
     image: enviloup/search
     networks:
       - enviloup
+    expose:
+      - 8000
 
   uploading:
     image: enviloup/uploading
     networks:
       - enviloup
+    expose:
+      - 8000
 
 networks:
   enviloup:
