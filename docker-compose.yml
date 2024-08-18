@@ -11,6 +11,21 @@ services:
     networks:
       - enviloup
 
+  s3-storage:
+    image: minio/minio
+    command: minio server /data --console-address ":9001"
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - 'minio_data:/data'
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+      - MINIO_DEFAULT_BUCKET=enviloup
+    networks:
+      - enviloup
+
   api:
     image: enviloup/api
     networks:
@@ -69,3 +84,6 @@ services:
 
 networks:
   enviloup:
+
+volumes:
+  minio_data:
