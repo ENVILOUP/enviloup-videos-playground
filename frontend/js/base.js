@@ -39,11 +39,11 @@ const loadVideosList = async (event) => {
   const api = new Api();
 
   const videos_list = await api.get('/video/list/');
-  videosList.innerHTML = '';
+  console.log(videos_list);
 
+  videosList.innerHTML = '';
   let i = 0;
   for (let video of videos_list) {
-    console.log(video);
     videosList.innerHTML += `
       <div class="video">
         <a href="/watch?v=${video['id']}">
