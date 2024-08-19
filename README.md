@@ -37,6 +37,11 @@ $ source .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
+### Библиотеки для фронта
+
+Установить [video.js](https://github.com/videojs/video.js/releases/tag/v8.17.3) 
+и распаковать в `frontend/video-js/`
+
 Теперь в IDE дожно все подсвечиваться и можно запустить приложения. Хотя лучше
 проводить тесты в Docker. 
 

@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Watch</title>
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="video-js/video-js.min.css">
+  <script src="video-js/video.min.js"></script>
 </head>
 <body>
 
@@ -16,8 +18,13 @@
 <main>
   <section id="video">
     <div class="play">
-      <video controls poster="img/thumbnail_test.jpg">
-        <source src="video/flower.mp4" type="video/mp4"/>
+      <video
+          class="video-js"
+          controls
+          data-setup='{}'
+          poster="img/thumbnail_test.jpg">
+<!--        <source src="video/flower.mp4" type="video/mp4"/>-->
+        <source src="video/video_for_tests_enviloup_videos/master.m3u8" type='application/x-mpegURL'>
       </video>
     </div>
     <div class="detail">

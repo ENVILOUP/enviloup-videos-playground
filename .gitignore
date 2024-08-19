@@ -9,3 +9,5 @@ venv.bak/
 __pycache__
 *.py[cod]
 *.so
+frontend/video-js/
+frontend/video/video_for_tests_enviloup_videos

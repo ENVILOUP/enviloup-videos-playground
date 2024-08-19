@@ -2,7 +2,7 @@ name: enviloup-videos
 
 services:
   nginx:
-    image: nginx:stable-alpine3.19
+    image: tiangolo/nginx-rtmp
     ports:
       - "80:80"
     volumes:
