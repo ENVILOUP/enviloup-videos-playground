@@ -1,5 +1,5 @@
 const loadVideosList = async (event) => {
-  if (window.location.pathname !== '/') {
+  if (window.location.pathname !== '/' || window.location.pathname !== '/index') {
     return;
   }
 

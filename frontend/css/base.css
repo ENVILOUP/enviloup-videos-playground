@@ -13,6 +13,11 @@ body header {
     padding: 20px 10px;
 }
 
+body header a {
+    color: #fff;
+    font-size: large;
+}
+
 main {
 
 }
