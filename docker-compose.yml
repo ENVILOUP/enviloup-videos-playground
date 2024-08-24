@@ -4,10 +4,11 @@ services:
   nginx:
     image: tiangolo/nginx-rtmp
     ports:
-      - "80:80"
+      - "443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./frontend:/var/www/html
+      - ./nginx/certificates:/certificates
     networks:
       - enviloup
 

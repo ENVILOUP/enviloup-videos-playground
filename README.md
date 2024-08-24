@@ -42,6 +42,17 @@ $ pip install -r requirements.txt
 Установить [video.js](https://github.com/videojs/video.js/releases/tag/v8.17.3) 
 и распаковать в `frontend/video-js/`
 
+### Сертификаты
+
+Для нормальной разработки нужно будет принять самоподписанные сертификаты, 
+чтобы работал SSL (HTTPS)
+
+#### Windows
+
+Переходим в директорию `nginx/certificates` и запускаем файл `pub-selfsigned.crt`.
+
+------------
+
 Теперь в IDE дожно все подсвечиваться и можно запустить приложения. Хотя лучше
 проводить тесты в Docker. 
 
