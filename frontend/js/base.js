@@ -2,7 +2,7 @@ const body = document.body;
 
 class Api {
   constructor() {
-    this.baseUrl = 'http://enviloup.com/api';
+    this.baseUrl = `${window.location.origin}/api`;
   }
 
   async get(endpoint) {
