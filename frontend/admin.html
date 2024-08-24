@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watch</title>
+  <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Enviloup Videos</h1>
+    <div>
+      <a href="/">Главная</a>
+      <a href="/admin">Админка</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2>Загрузка видео</h2>
+    <form id="videoupload">
+      <p>
+        <label for="video-video">Выбери видео:</label>
+        <input type="file" id="video-video" name="video-video" required/>
+        <span id="video-video-progress">0 %</span>
+      </p>
+      <p>
+        <label for="video-thumbnail">Выбери обложку для видео:</label>
+        <input type="file" id="video-thumbnail" name="video-thumbnail" required/>
+      </p>
+      <p>
+        <label for="video-title">Введи название для видео:</label>
+        <input type="text" id="video-title" name="video-title" value="No title" required/>
+      </p>
+      <p>
+        <label for="video-description">Введи описание для видео:</label>
+        <input type="text" id="video-description" name="video-description" value="No description"/>
+      </p>
+      <input type="submit" value="Отправить"/>
+    </form>
+  </section>
+</main>
+
+</body>
+<script src="js/base.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/admin.js"></script>
+</html>
