@@ -1,54 +1,61 @@
+from uuid import UUID
+from typing import Annotated
+
 import fastapi
-import pydantic
-from minio import Minio
+from pydantic import BaseModel
+from datetime import datetime
 
 app = fastapi.FastAPI()
 
-client = Minio("s3-storage:9000",
-               access_key="Y4V9npKFwGru81ZDASq8",
-               secret_key="D9ZG56RepFWdLzVVJz4hbSGEhsaySI8Hc1LuiwMW",
-               cert_check=False,
-               secure=False)
+
+class VideoStats(BaseModel):
+    likes: int
+    dislikes: int
+    views: int
 
 
-class Video(pydantic.BaseModel):
-    id: int
+class Video(BaseModel):
+    uuid: Annotated[str, UUID]
     title: str
     descrition: str
+    thumbnail_path: str
+    playlist_path: str
+    stats: VideoStats
+    pub_date: datetime
 
 
 @app.get('/health-check')
 async def health_check():
-    if not client.bucket_exists('enviloup'):
-        raise fastapi.exceptions.HTTPException(status_code=404, detail='`enviloup` S3 bucket is not exist!')
     return {'status': 'ok'}
 
 
 VIDEOS_DATABASE = [
-    Video(id=1,
-          title='Hello World',
-          descrition='Some description for Hello'),
-    Video(id=2,
-          title='The concept meaning',
-          descrition='The concept meaning by Nikita'),
-    Video(id=3,
-          title='What is Enviloup?',
-          descrition='Video about Enviloup'),
-    Video(id=4,
-          title='What is Enviloup?',
-          descrition='Video about Enviloup'),
-    Video(id=5,
-          title='What is Enviloup?',
-          descrition='Video about Enviloup'),
-    Video(id=6,
-          title='What is Enviloup?',
-          descrition='Video about Enviloup'),
-    Video(id=7,
-          title='What is Enviloup?',
-          descrition='Video about Enviloup'),
-    Video(id=8,
-          title='What is Enviloup?',
-          descrition='Video about Enviloup'),
+    Video(
+        uuid='35b1c855-1a90-42e2-a1c0-1fd4ca9c4450',
+        title='Hello World',
+        descrition='Some description for Hello',
+        thumbnail_path='cdn.enviloup.com/path/to/thumbnail.jpg',
+        playlist_path='path/to/master_playlist.m3u8',
+        stats=VideoStats(
+            likes=134,
+            dislikes=12,
+            views=5245
+        ),
+        pub_date=datetime.now()
+    ),
+    Video(
+        uuid='fa8a7683-65da-4a6c-8ea3-f90d8e56731c',
+        title='What is CONCEPT?',
+        descrition="What is concept and WHY Nikita doesn't understand this",
+        thumbnail_path='path/to/thumbnail.jpg',
+        playlist_path='path/to/master_playlist.m3u8',
+        stats=VideoStats(
+            likes=826,
+            dislikes=107,
+            views=12942
+        ),
+        pub_date=datetime.now()
+    ),
 ]
 
 
@@ -57,9 +64,9 @@ async def get_videos_list() -> list[Video]:
     return VIDEOS_DATABASE
 
 
-@app.get('/video/{video_id}/')
-async def get_video(video_id: int) -> Video:
+@app.get('/video/{video_uuid}/')
+async def get_video(video_uuid: Annotated[str, UUID]) -> Video:
     for video in VIDEOS_DATABASE:
-        if video.id == video_id:
+        if video.uuid == video_uuid:
             return video
     raise fastapi.exceptions.HTTPException(status_code=404)

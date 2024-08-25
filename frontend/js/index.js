@@ -14,7 +14,7 @@ const loadVideosList = async (event) => {
   for (let video of videos_list) {
     videosList.innerHTML += `
       <div class="video">
-        <a href="/watch?v=${video['id']}">
+        <a href="/watch?v=${video['uuid']}">
           <div class="thumbnail">
             <img src="img/thumbnail_test.jpg" alt="">
           </div>
@@ -22,9 +22,9 @@ const loadVideosList = async (event) => {
             <h3 class="title">${video['title']}</h3>
             <p class="description">${video['descrition']}</p>
             <div class="stats">
-              <span class="views">0 views</span>
+              <span class="views">${video['stats']['views']} views</span>
               &#10070;
-              <span class="publish-date">Aug 17 11:15 2024</span>
+              <span class="publish-date">${new Date(video['pub_date']).toDateString()}</span>
             </div>
           </div>
         </a>
